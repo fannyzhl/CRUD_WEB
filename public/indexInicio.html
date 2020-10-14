@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+				<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+					<div class="container">
+						<a class="navbar-brand js-scroll-trigger" href="indexCarrito.html"><img  src="carro.png" height="50px" width="50px"  id="img"></a>
+						<button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+							Menu
+							<i class="fa fa-bars"></i>
+						</button>
+						  <div class="collapse navbar-collapse" id="navbarResponsive">
+							<ul class="navbar-nav ml-auto">
+                                <li class="nav-item mx-0 mx-lg-1">
+                		          <input class="form-control " id="buscador" type="text" placeholder="Ingrese su busqueda" style="margin-top:5%; margin-left:-80%"required="required" 
+                                  data-validation-required-message="Ingrese su busqueda">
+                	            </li>
+                                <li class="nav-item mx-0 mx-lg-1">
+                                    <button id="buscadorBoton" type="button" onclick="buscar()" class="btn btn-basic" style="margin-top:25%; margin-left:-370%;background-color:white; " data-toggle="modal" data-target="#buscar"><img src="buscador.png" style="width:20px; height:20px;">
+                                    </button>
+                                </li>
+							  <li class="nav-item mx-0 mx-lg-1">
+								<input type="button"  class="btn btn-default" onclick="" style="color:black; cursor: pointer;; background-color:bg-primary; font-size:15px" class="bg-secondary btn btn-basic py-6 px-0 px-lg-3 rounded js-scroll-trigger" value="Log Out"></input>
+							  </li>
+							</ul>
+						  </div>
+						</div>
+					</nav>
+					<br>
+					<br>
+					<br>
+					<div class="row content">
+							<div class="col-md-8">
+									<button type="button"  class="btn add-new" style="background-color: rgba(46, 67, 135, 0.541); position: absolute; left: 60px; top: 20px;" data-toggle="modal" data-target="#addProduct"><img src="addProduct.png" style="width:30px; height:30px;">Add new product</button>
+							</div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<div class="col-lg-12 text-center">
+							<h2 class="section-heading">Products</h2>
+						  </div>
+						  <br>
+						  <div class="container">
+							  <div class="card-columns">
+									<div class="card card-home">
+											<img class="card-img-top" src="laptop.jpg" alt="Card image" >
+											<div class="card-body">
+											  <h4 class="card-title">Product name</h4>
+											  <h5>Price</h5>
+											  <button class="btn btn-default signin-link" data-toggle="modal" href="#signinModal" id="see-p">See Product</button>
+											</div>
+										  </div>
+							  </div>
+						  </div>
+						  <br>
+						  <br>
+						  <br>
+					
+						  <!--Modal Products-->
+					
+						  <div class="prouct-modal modal fade" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
+							  <div class="modal-dialog">
+								<div class="modal-content">
+								  <div class="close-modal" data-dismiss="modal">
+									<div class="lr">
+									  <div class="rl"></div>
+									</div>
+								  </div>
+								  <div class="container">
+									<div class="row">
+									  <div class="col-lg-8 mx-auto">
+										<div class="modal-body">
+										  <h2 class="text-uppercase">Product Name</h2>
+										  <br>
+										  <div id="product-info">
+											  <label for="Quantity">Quantity</label>
+											  <input class="form-control" disabled="disabled" type="number" value="1"  min="1" id="u-amount">
+											  <label for="Price" id="my-price">Price</label>
+											  <input class="form-control" disabled="disabled" type="number" value="1.00"min="0.00" step="0.05" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency"  id="m-price" />                           
+											  <textarea class="form-control" id="my-des" rows="3" disabled="disabled"></textarea>                                  
+											</div>
+										  <button class="btn btn-primary" data-dismiss="modal" type="button">
+											<i class="fa fa-times"></i>
+											Close</button>
+											<button class="btn btn-primary" type="button">Wishlist</button>
+											<input class="form-control" type="number" value="1"  min="1" id="all-amount">
+										</div>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							</div>
+					<div id="addProduct" class="modal fade">
+							<div class="modal-dialog modal-md">
+								<div class="modal-content">
+									<form>
+										<div class="modal-header">						
+											<h4 class="modal-title"><center>New Product</center></h4>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										</div>
+										<div class="modal-body">					
+											<div class="form-group">
+												<input type="text" class="form-control"  id="product_name" required="required" placeholder="Name of the product" autofocus>
+											</div>
+											<div class="form-group">
+													<input type="text" class="form-control"  id="product_desc" required="required" placeholder="Description">
+											</div>
+											<div>
+												<form>
+													Select an image: <input class="btn btn-default "type="file" name="myFile">
+												</form>	
+											</div>			
+										</div>
+										<div class="modal-footer">
+											<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+											<button type="button" id="addBoard" onclick="" class="btn btn-success add-board">Add</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+		</div>
+	</div>
+
+
+	
+
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

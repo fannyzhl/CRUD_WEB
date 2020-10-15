@@ -1,9 +1,9 @@
 const express = require('express');
-const config = require('./helpers/config');
+const config = require('./utils/config');
 const jwt = require('express-jwt');
 const app = express();
 let passport = require('passport');
-let userQueries = require('./helpers/queries').user;
+let userQueries = require('./utils/queries').user;
 
 app.use('/views', express.static(__dirname + '/public'));
 app.use(express.json());
@@ -23,7 +23,7 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
     done(null, user);
 });
-app.use('/', require('./controllers'));
+app.use('/', require('./routes'));
 
 app.get('/', function (req, res) {
   res.redirect('views/index.html');

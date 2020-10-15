@@ -1,6 +1,6 @@
 const express = require('express');
-const db = require('./../helpers/db');
-const productQueries = require('./../helpers/queries').product;
+const db = require('./../utils/db');
+const productQueries = require('./../utils/queries').product;
 const isLoggedIn = require('./../middlewares/isLogged').conectado;
 
 let router = express.Router();

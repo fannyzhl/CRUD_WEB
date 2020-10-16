@@ -3,7 +3,7 @@ const config = require('./utils/config');
 const jwt = require('express-jwt');
 const app = express();
 let passport = require('passport');
-let userQueries = require('./utils/queries').user;
+//let userQueries = require('./utils/queries').user;
 
 app.use('/views', express.static(__dirname + '/public'));
 app.use(express.json());
@@ -36,7 +36,9 @@ app.use(function (err, req, res, next) {
     });
   }
 });
-app.listen(config.port, function () {
-  console.log('Example app listening on port 3000!');
-});
 
+app.set ('port', process.env.PORT || 3000);
+
+app.listen(app.get('port'), () => {
+  console.log(`server on port ${app.get('port')}`);
+});

@@ -3,7 +3,12 @@ const config = require('./utils/config');
 const jwt = require('express-jwt');
 const app = express();
 let passport = require('passport');
+<<<<<<< HEAD
 //let userQueries = require('./utils/queries').user;
+=======
+const { port } = require('./utils/config');
+let userQueries = require('./utils/queries').user;
+>>>>>>> b4cea7e4fa842cf53878f8ad60d2c8528ff70bb0
 
 app.use('/views', express.static(__dirname + '/public'));
 app.use(express.json());

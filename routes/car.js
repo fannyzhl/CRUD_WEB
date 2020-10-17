@@ -15,7 +15,7 @@ router.post('/agregar', isLoggedIn, (req, res) => {
         if(!chequeo){
             if(cantidad.quantify >= quantify ){
                 if(quantify > 0){
-                    await task.none(cartQueries.AgregarCarrito, [product_id, user_id,quantify])
+                    await task.none(cartQueries.AgregarCarrito, [user_id, product_id,quantify])
                 }else{
                     res.status(422).send({response:'No se pueden ingresar productos negativos'});   
                 }

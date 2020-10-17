@@ -15,7 +15,7 @@ app.use(express.urlencoded({
 app.use(jwt({
   secret: config.secret
 }).unless({
-    path: ['/user/registrar', '/user/iniciar','/']
+    path: ['/user/registrar', '/user/iniciar','/file/upload','/']
 }));;
 app.use(passport.initialize());
 app.use(passport.session());
@@ -28,8 +28,11 @@ passport.deserializeUser(function (user, done) {
 app.use('/', require('./routes'));
 
 app.get('/', function (req, res) {
-  res.redirect('views/subir.html');
-});
+  res.redirect('views/index.html');
+}); 
+
+/* app.get('/', (req, res) => res.render('index')); */
+
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
     res.status(401).send({

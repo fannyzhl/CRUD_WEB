@@ -1,34 +1,52 @@
-const express = require ('express');
-const multer = require ('multer'); 
-const storage = express.storage;
+ // call all the required packages
+const express = require('express')
+const bodyParser= require('body-parser')
+const multer = require('multer');
+const dbimg = require ('pg')
+const queries = require('./../utils/queries').file;
+const db = require('./../utils/db');
 
+//CREATE EXPRESS APP
 let router = express.Router();
+// ROUTES
+router.get('/',function(req,res){
+    res.sendFile(__dirname + '/index.html');
+   
+  });
 
+  router.use(bodyParser.urlencoded({extended: true}))
 
-const upload = multer({
-    storage: storage,
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "image/gif") {
-            cb(null, true);
-        } else {
-            cb(null, false);
-            return cb(new Error('Allowed only .png, .jpg, .jpeg and .gif'));
-        }
+ 
+// SET STORAGE
+const url = "myFile-"+Date.now();
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, url)
     }
-});
-
-router.get('/', (req, res) => {
-    res.sendFile('./public/subir.html', {root: __dirname})
-})
-
-router.post('/subir', upload.single('archivo'), (req,res) => {
-    console.log(req.file)
-    res.send("archivo se subio correctamente")
-    console.log(req.file, req.body)
-})
+  })
+const upload = multer({ storage: storage })
 
 
+  
+  router.post('/upload', upload.single('myFile'), (req, res, next) => {
+    
+    const file = req.file
+    if (!file) {
+      const error = new Error('Please upload a file')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+      res.send(file)
+      console.log("comenzando");
+      db.task('insert-image', async task => {
+        console.log("aqui");
+        await task.any(queries.Agregarimagen, [url])
+    })
 
+    
+  })
 
-
-module.exports = router;
+  module.exports = router

@@ -24,3 +24,7 @@ module.exports.car = {
 
 }
 
+module.exports.file = {
+    Agregarimagen: 'INSERT INTO imagen(img_url) VALUES ($1)'
+}
+

@@ -58,20 +58,4 @@ router.post('/iniciar', isLogged.desconectado, (req, res) => {
     });
 })
 
-// LOGOUT
-router.get('/cerrar', isLogged.conectado, (req, res) => {
-    req.cerrar();
-    res.status(200).send({
-        status: 200,
-    })
-})
-
-router.get('/auth', (req,res) => {
-    if (req.isAuthenticated()) {
-        res.status(200).send({auth:'logged'});
-    } else {
-        res.status(200).send({auth:'invited'});
-    }
-})
-
 module.exports = router;
